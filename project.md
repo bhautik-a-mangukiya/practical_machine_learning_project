@@ -1,57 +1,112 @@
----
-title: Practical Machine Learning Project - Quantified Self Movement Data Analysis Report  
-author: "Bhautik A. Mangukiya"
-output: 
-  html_document:
-    toc: true
-    theme: united
-  md_document: 
-    variant: markdown_github
----
+# Practical Machine Learning Course Project Report
 
-Practical Machine Learning Course Project Report  
-================================================  
+These is a file produced during a homework assignment of Coursera’s MOOC
+<b>Practical Machine Learning</b> from <b>Johns Hopkins Bloomberg School
+of Public Health</b>.  
+For more information about the several MOOCs comprised in this
+Specialization, please visit:
+<https://www.coursera.org/specialization/jhudatascience/>
 
-These is a file produced during a homework assignment of Coursera's MOOC <b>Practical Machine Learning</b> from <b>Johns Hopkins Bloomberg School of Public Health</b>.  
-For more information about the several MOOCs comprised in this Specialization, please visit: [https://www.coursera.org/specialization/jhudatascience/](https://www.coursera.org/specialization/jhudatascience/)  
+## Background
 
-## Background  
-Using devices such as Jawbone Up, Nike FuelBand, and Fitbit it is now possible to collect a large amount of data about personal activity relatively inexpensively. These type of devices are part of the quantified self movement - a group of enthusiasts who take measurements about themselves regularly to improve their health, to find patterns in their behavior, or because they are tech geeks. One thing that people regularly do is quantify how much of a particular activity they do, but they rarely quantify how well they do it. In this project, our goal will be to use data from accelerometers on the belt, forearm, arm, and dumbell of 6 participants. They were asked to perform barbell lifts correctly and incorrectly in 5 different ways. More information is available from the website here: [http://groupware.les.inf.puc-rio.br/har](http://groupware.les.inf.puc-rio.br/har) (see the section on the Weight Lifting Exercise Dataset).   
+Using devices such as Jawbone Up, Nike FuelBand, and Fitbit it is now
+possible to collect a large amount of data about personal activity
+relatively inexpensively. These type of devices are part of the
+quantified self movement - a group of enthusiasts who take measurements
+about themselves regularly to improve their health, to find patterns in
+their behavior, or because they are tech geeks. One thing that people
+regularly do is quantify how much of a particular activity they do, but
+they rarely quantify how well they do it. In this project, our goal will
+be to use data from accelerometers on the belt, forearm, arm, and
+dumbell of 6 participants. They were asked to perform barbell lifts
+correctly and incorrectly in 5 different ways. More information is
+available from the website here:
+<http://groupware.les.inf.puc-rio.br/har> (see the section on the Weight
+Lifting Exercise Dataset).
 
-## Data Sources  
+## Data Sources
+
 The training data for this project is available here:  
-[https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv](https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv)  
+<https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv>  
 The test data is available here:  
-[https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv](https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv)  
-The data for this project comes from this original source: [http://groupware.les.inf.puc-rio.br/har](http://groupware.les.inf.puc-rio.br/har). If you use the document you create for this class for any purpose please cite them as they have been very generous in allowing their data to be used for this kind of assignment.  
+<https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv>  
+The data for this project comes from this original source:
+<http://groupware.les.inf.puc-rio.br/har>. If you use the document you
+create for this class for any purpose please cite them as they have been
+very generous in allowing their data to be used for this kind of
+assignment.
 
-## Intended Results  
-The goal of this project is to predict the manner in which they did the exercise. This is the "classe" variable in the training set. You may use any of the other variables to predict with. You should create a report describing how you built your model, how you used cross validation, what you think the expected out of sample error is, and why you made the choices you did. You will also use your prediction model to predict 20 different test cases.  
-1. Your submission should consist of a link to a Github repo with your R markdown and compiled HTML file describing your analysis. Please constrain the text of the writeup to < 2000 words and the number of figures to be less than 5. It will make it easier for the graders if you submit a repo with a gh-pages branch so the HTML page can be viewed online (and you always want to make it easy on graders :-).  
-2. You should also apply your machine learning algorithm to the 20 test cases available in the test data above. Please submit your predictions in appropriate format to the programming assignment for automated grading. See the programming assignment for additional details.  
+## Intended Results
 
-## Reproducibility  
-In order to reproduce the same results, you need a certain set of packages as well as setting a pseudo random seed equal to the one I have used.  
-`Note`: To install, for instance, the `rattle` package in R, run this command: `install.packages("rattle")`.  
-The following Libraries were used for this project, which you should install and load them in your working environment.  
-```{r warning=FALSE, echo=FALSE}
-library(rattle)
-library(caret)
-library(rpart)
-library(rpart.plot)
-library(corrplot)
-library(randomForest)
-library(RColorBrewer)
-```  
-Finally, load the same seed with the following line of code:  
-```{r warning=FALSE, error=FALSE}
+The goal of this project is to predict the manner in which they did the
+exercise. This is the “classe” variable in the training set. You may use
+any of the other variables to predict with. You should create a report
+describing how you built your model, how you used cross validation, what
+you think the expected out of sample error is, and why you made the
+choices you did. You will also use your prediction model to predict 20
+different test cases.  
+1. Your submission should consist of a link to a Github repo with your R
+markdown and compiled HTML file describing your analysis. Please
+constrain the text of the writeup to \< 2000 words and the number of
+figures to be less than 5. It will make it easier for the graders if you
+submit a repo with a gh-pages branch so the HTML page can be viewed
+online (and you always want to make it easy on graders :-).  
+2. You should also apply your machine learning algorithm to the 20 test
+cases available in the test data above. Please submit your predictions
+in appropriate format to the programming assignment for automated
+grading. See the programming assignment for additional details.
+
+## Reproducibility
+
+In order to reproduce the same results, you need a certain set of
+packages as well as setting a pseudo random seed equal to the one I have
+used.  
+`Note`: To install, for instance, the `rattle` package in R, run this
+command: `install.packages("rattle")`.  
+The following Libraries were used for this project, which you should
+install and load them in your working environment.
+
+    ## Loading required package: tibble
+
+    ## Loading required package: bitops
+
+    ## Rattle: A free graphical interface for data science with R.
+    ## Version 5.5.1 Copyright (c) 2006-2021 Togaware Pty Ltd.
+    ## Type 'rattle()' to shake, rattle, and roll your data.
+
+    ## Loading required package: ggplot2
+
+    ## Loading required package: lattice
+
+    ## corrplot 0.92 loaded
+
+    ## randomForest 4.7-1.1
+
+    ## Type rfNews() to see new features/changes/bug fixes.
+
+    ## 
+    ## Attaching package: 'randomForest'
+
+    ## The following object is masked from 'package:ggplot2':
+    ## 
+    ##     margin
+
+    ## The following object is masked from 'package:rattle':
+    ## 
+    ##     importance
+
+Finally, load the same seed with the following line of code:
+
+``` r
 set.seed(123)
-```  
+```
 
-## Getting Data  
+## Getting Data
 
-The following code fragment downloads the dataset to the `data` folder in the current working directory.  
-```{r warning=FALSE, error=FALSE}
+The following code fragment downloads the dataset to the `data` folder
+in the current working directory.
+
+``` r
 trainUrl <-"https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv"
 testUrl <- "https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv"
 trainFile <- "./data/pml-training.csv"
@@ -67,38 +122,94 @@ if (!file.exists(testFile)) {
 }
 rm(trainUrl)
 rm(testUrl)
-```  
+```
 
-## Reading Data  
-After downloading the data from the data source, we can read the two csv files into two data frames.  
-```{r warning=FALSE, error=FALSE}
+## Reading Data
+
+After downloading the data from the data source, we can read the two csv
+files into two data frames.
+
+``` r
 trainRaw <- read.csv(trainFile)
 testRaw <- read.csv(testFile)
 dim(trainRaw)
+```
+
+    ## [1] 19622   160
+
+``` r
 dim(testRaw)
+```
+
+    ## [1]  20 160
+
+``` r
 rm(trainFile)
 rm(testFile)
-```  
-The training data set contains `r dim(trainRaw)[1]` observations and `r dim(trainRaw)[2]` variables, while the testing data set contains `r dim(testRaw)[1]` observations and `r dim(testRaw)[2]` variables. The `classe` variable in the training set is the outcome to predict.  
+```
 
-## Cleaning Data  
-In this step, we will clean the dataset and get rid of observations with missing values as well as some meaningless variables.  
+The training data set contains 19622 observations and 160 variables,
+while the testing data set contains 20 observations and 160 variables.
+The `classe` variable in the training set is the outcome to predict.
 
-1. We clean the <b>Near Zero Variance</b> Variables.  
-```{r warning=FALSE, error=FALSE}
+## Cleaning Data
+
+In this step, we will clean the dataset and get rid of observations with
+missing values as well as some meaningless variables.
+
+1.  We clean the <b>Near Zero Variance</b> Variables.
+
+``` r
 NZV <- nearZeroVar(trainRaw, saveMetrics = TRUE)
 head(NZV, 20)
+```
+
+    ##                        freqRatio percentUnique zeroVar   nzv
+    ## X                       1.000000  100.00000000   FALSE FALSE
+    ## user_name               1.100679    0.03057792   FALSE FALSE
+    ## raw_timestamp_part_1    1.000000    4.26562022   FALSE FALSE
+    ## raw_timestamp_part_2    1.000000   85.53154622   FALSE FALSE
+    ## cvtd_timestamp          1.000668    0.10192641   FALSE FALSE
+    ## new_window             47.330049    0.01019264   FALSE  TRUE
+    ## num_window              1.000000    4.37264295   FALSE FALSE
+    ## roll_belt               1.101904    6.77810621   FALSE FALSE
+    ## pitch_belt              1.036082    9.37722964   FALSE FALSE
+    ## yaw_belt                1.058480    9.97349913   FALSE FALSE
+    ## total_accel_belt        1.063160    0.14779329   FALSE FALSE
+    ## kurtosis_roll_belt   1921.600000    2.02323922   FALSE  TRUE
+    ## kurtosis_picth_belt   600.500000    1.61553358   FALSE  TRUE
+    ## kurtosis_yaw_belt      47.330049    0.01019264   FALSE  TRUE
+    ## skewness_roll_belt   2135.111111    2.01304658   FALSE  TRUE
+    ## skewness_roll_belt.1  600.500000    1.72255631   FALSE  TRUE
+    ## skewness_yaw_belt      47.330049    0.01019264   FALSE  TRUE
+    ## max_roll_belt           1.000000    0.99378249   FALSE FALSE
+    ## max_picth_belt          1.538462    0.11211905   FALSE FALSE
+    ## max_yaw_belt          640.533333    0.34654979   FALSE  TRUE
+
+``` r
 training01 <- trainRaw[, !NZV$nzv]
 testing01 <- testRaw[, !NZV$nzv]
 dim(training01)
+```
+
+    ## [1] 19622   100
+
+``` r
 dim(testing01)
+```
+
+    ## [1]  20 100
+
+``` r
 rm(trainRaw)
 rm(testRaw)
 rm(NZV)
-```  
+```
 
-2. Removing some columns of the dataset that do not contribute much to the accelerometer measurements.  
-```{r warning=FALSE, error=FALSE}
+1.  Removing some columns of the dataset that do not contribute much to
+    the accelerometer measurements.
+
+``` r
 regex <- grepl("^X|timestamp|user_name", names(training01))
 training <- training01[, !regex]
 testing <- testing01[, !regex]
@@ -106,83 +217,214 @@ rm(regex)
 rm(training01)
 rm(testing01)
 dim(training)
-dim(testing)
-```  
+```
 
-3. Removing columns that contain `NA's`.  
-```{r warning=FALSE, error=FALSE}
+    ## [1] 19622    95
+
+``` r
+dim(testing)
+```
+
+    ## [1] 20 95
+
+1.  Removing columns that contain `NA's`.
+
+``` r
 cond <- (colSums(is.na(training)) == 0)
 training <- training[, cond]
 testing <- testing[, cond]
 rm(cond)
-```  
+```
 
-Now, the cleaned training data set contains `r dim(training)[1]` observations and `r dim(training)[2]` variables, while the testing data set contains `r dim(testing)[1]` observations and `r dim(testing)[2]` variables.  
+Now, the cleaned training data set contains 19622 observations and 54
+variables, while the testing data set contains 20 observations and 54
+variables.
 
-Correlation Matrix of Columns in the Training Data set.  
-```{r warning=FALSE, error=FALSE}
+Correlation Matrix of Columns in the Training Data set.
+
+``` r
 corrplot(cor(training[, -length(names(training))]), method = "color", tl.cex = 0.5)
-```  
+```
 
-## Partitioning Training Set  
-we split the cleaned training set into a pure training data set (70%) and a validation data set (30%). We will use the validation data set to conduct cross validation in future steps.  
-```{r warning=FALSE, error=FALSE}
+![](project_files/figure-markdown_github/unnamed-chunk-8-1.png)
+
+## Partitioning Training Set
+
+we split the cleaned training set into a pure training data set (70%)
+and a validation data set (30%). We will use the validation data set to
+conduct cross validation in future steps.
+
+``` r
 set.seed(56789) # For reproducibile purpose
 inTrain <- createDataPartition(training$classe, p = 0.70, list = FALSE)
 validation <- training[-inTrain, ]
 training <- training[inTrain, ]
 rm(inTrain)
-```  
-The Dataset now consists of `r dim(training)[2]` variables with the observations divided as following:  
-1. Training Data: `r dim(training)[1]` observations.  
-2. Validation Data: `r dim(validation)[1]` observations.  
-3. Testing Data: `r dim(testing)[1]` observations.  
+```
 
-## Data Modelling  
+The Dataset now consists of 54 variables with the observations divided
+as following:  
+1. Training Data: 13737 observations.  
+2. Validation Data: 5885 observations.  
+3. Testing Data: 20 observations.
 
-### Decision Tree  
-We fit a predictive model for activity recognition using <b>Decision Tree</b> algorithm.  
-```{r warning=FALSE, error=FALSE}
+## Data Modelling
+
+### Decision Tree
+
+We fit a predictive model for activity recognition using <b>Decision
+Tree</b> algorithm.
+
+``` r
 modelTree <- rpart(classe ~ ., data = training, method = "class")
 prp(modelTree)
-```  
+```
 
-Now, we estimate the performance of the model on the <b>validation</b> data set.  
-```{r warning=FALSE, error=FALSE}
+![](project_files/figure-markdown_github/unnamed-chunk-10-1.png)
+
+Now, we estimate the performance of the model on the <b>validation</b>
+data set.
+
+``` r
 predictTree <- predict(modelTree, validation, type = "class")
 confusionMatrix(as.factor(validation$classe), as.factor(predictTree))
+```
+
+    ## Confusion Matrix and Statistics
+    ## 
+    ##           Reference
+    ## Prediction    A    B    C    D    E
+    ##          A 1492   37   10   84   51
+    ##          B  270  551  120  134   64
+    ##          C   55   32  818   49   72
+    ##          D  116   17  117  655   59
+    ##          E   84   89   61  140  708
+    ## 
+    ## Overall Statistics
+    ##                                           
+    ##                Accuracy : 0.7178          
+    ##                  95% CI : (0.7061, 0.7292)
+    ##     No Information Rate : 0.3427          
+    ##     P-Value [Acc > NIR] : < 2.2e-16       
+    ##                                           
+    ##                   Kappa : 0.6409          
+    ##                                           
+    ##  Mcnemar's Test P-Value : < 2.2e-16       
+    ## 
+    ## Statistics by Class:
+    ## 
+    ##                      Class: A Class: B Class: C Class: D Class: E
+    ## Sensitivity            0.7397  0.75895   0.7265   0.6168   0.7421
+    ## Specificity            0.9529  0.88602   0.9563   0.9359   0.9242
+    ## Pos Pred Value         0.8913  0.48376   0.7973   0.6795   0.6543
+    ## Neg Pred Value         0.8753  0.96313   0.9366   0.9173   0.9488
+    ## Prevalence             0.3427  0.12336   0.1913   0.1805   0.1621
+    ## Detection Rate         0.2535  0.09363   0.1390   0.1113   0.1203
+    ## Detection Prevalence   0.2845  0.19354   0.1743   0.1638   0.1839
+    ## Balanced Accuracy      0.8463  0.82249   0.8414   0.7763   0.8331
+
+``` r
 accuracy <- confusionMatrix(as.factor(validation$classe), as.factor(predictTree))$overall[1]
 ose <- 1 - accuracy
 rm(predictTree)
 rm(modelTree)
-```  
+```
 
-The Estimated Accuracy of the Random Forest Model is `r accuracy[1]*100`% and the Estimated Out-of-Sample Error is `r ose*100`%.  
+The Estimated Accuracy of the Random Forest Model is 71.7757009% and the
+Estimated Out-of-Sample Error is 28.2242991%.
 
 ### Random Forest
-We fit a predictive model for activity recognition using <b>Random Forest</b> algorithm because it automatically selects important variables and is robust to correlated covariates & outliers in general.  
-We will use <b>5-fold cross validation</b> when applying the algorithm.  
-```{r warning=FALSE, error=FALSE}
+
+We fit a predictive model for activity recognition using <b>Random
+Forest</b> algorithm because it automatically selects important
+variables and is robust to correlated covariates & outliers in
+general.  
+We will use <b>5-fold cross validation</b> when applying the algorithm.
+
+``` r
 modelRF <-  randomForest(as.factor(classe) ~ ., data = training, ntree=500,mtry=5)
 modelRF
-```  
+```
 
-Now, we estimate the performance of the model on the <b>validation</b> data set.  
-```{r warning=FALSE, error=FALSE}
+    ## 
+    ## Call:
+    ##  randomForest(formula = as.factor(classe) ~ ., data = training,      ntree = 500, mtry = 5) 
+    ##                Type of random forest: classification
+    ##                      Number of trees: 500
+    ## No. of variables tried at each split: 5
+    ## 
+    ##         OOB estimate of  error rate: 0.34%
+    ## Confusion matrix:
+    ##      A    B    C    D    E  class.error
+    ## A 3904    1    0    0    1 0.0005120328
+    ## B    5 2651    2    0    0 0.0026335591
+    ## C    0   16 2380    0    0 0.0066777963
+    ## D    0    0   17 2234    1 0.0079928952
+    ## E    0    0    0    4 2521 0.0015841584
+
+Now, we estimate the performance of the model on the <b>validation</b>
+data set.
+
+``` r
 predictRF <- predict(modelRF, validation)
 confusionMatrix(as.factor(validation$classe), as.factor(predictRF))
+```
+
+    ## Confusion Matrix and Statistics
+    ## 
+    ##           Reference
+    ## Prediction    A    B    C    D    E
+    ##          A 1673    1    0    0    0
+    ##          B    1 1137    1    0    0
+    ##          C    0    2 1024    0    0
+    ##          D    0    0    2  962    0
+    ##          E    0    0    0    2 1080
+    ## 
+    ## Overall Statistics
+    ##                                           
+    ##                Accuracy : 0.9985          
+    ##                  95% CI : (0.9971, 0.9993)
+    ##     No Information Rate : 0.2845          
+    ##     P-Value [Acc > NIR] : < 2.2e-16       
+    ##                                           
+    ##                   Kappa : 0.9981          
+    ##                                           
+    ##  Mcnemar's Test P-Value : NA              
+    ## 
+    ## Statistics by Class:
+    ## 
+    ##                      Class: A Class: B Class: C Class: D Class: E
+    ## Sensitivity            0.9994   0.9974   0.9971   0.9979   1.0000
+    ## Specificity            0.9998   0.9996   0.9996   0.9996   0.9996
+    ## Pos Pred Value         0.9994   0.9982   0.9981   0.9979   0.9982
+    ## Neg Pred Value         0.9998   0.9994   0.9994   0.9996   1.0000
+    ## Prevalence             0.2845   0.1937   0.1745   0.1638   0.1835
+    ## Detection Rate         0.2843   0.1932   0.1740   0.1635   0.1835
+    ## Detection Prevalence   0.2845   0.1935   0.1743   0.1638   0.1839
+    ## Balanced Accuracy      0.9996   0.9985   0.9983   0.9988   0.9998
+
+``` r
 accuracy <- confusionMatrix(as.factor(validation$classe), as.factor(predictRF))$overall[1]
 ose <- 1 - accuracy
 rm(predictRF)
-```  
+```
 
-The Estimated Accuracy of the Random Forest Model is `r accuracy[1]*100`% and the Estimated Out-of-Sample Error is `r ose*100`%.  
-Random Forests yielded better Results, as expected!  
+The Estimated Accuracy of the Random Forest Model is 99.8470688% and the
+Estimated Out-of-Sample Error is 0.1529312%.  
+Random Forests yielded better Results, as expected!
 
-## Predicting The Manner of Exercise for Test Data Set  
-Now, we apply the <b>Random Forest</b> model to the original testing data set downloaded from the data source. We remove the problem_id column first.  
-```{r warning=FALSE, error=FALSE}
+## Predicting The Manner of Exercise for Test Data Set
+
+Now, we apply the <b>Random Forest</b> model to the original testing
+data set downloaded from the data source. We remove the problem_id
+column first.
+
+``` r
 rm(accuracy)
 rm(ose)
 predict(modelRF, testing[, -length(names(testing))])
-```  
+```
+
+    ##  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 
+    ##  B  A  B  A  A  E  D  B  A  A  B  C  B  A  E  E  A  B  B  B 
+    ## Levels: A B C D E
